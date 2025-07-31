@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Ordering Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #e0f7fa 0%, #fffde4 100%);
+      color: #222;
+      min-height: 100vh;
+      position: relative;
+    }
+    header {
+      background: #4fc3f7;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 12px rgba(79,195,247,0.10);
+      letter-spacing: 1px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: opacity 0.2s, border-bottom 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 2px;
+    }
+    nav a:hover {
+      opacity: 0.8;
+      border-bottom: 2px solid #ffe082;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      color: #fff;
+      padding: 5rem 2rem 6rem 2rem;
+      text-align: center;
+      position: relative;
+      min-height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(120deg, rgba(79,195,247,0.6) 0%, rgba(255,224,130,0.5) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .hero h2 {
+      font-size: 2.7rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      font-weight: 500;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    .hero button {
+      background: linear-gradient(90deg, #4fc3f7 0%, #ffe082 100%);
+      color: #fff;
+      border: none;
+      padding: 1rem 2.2rem;
+      font-size: 1.15rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 2px 12px rgba(79,195,247,0.18);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .hero button:hover {
+      background: linear-gradient(90deg, #039be5 0%, #ffe082 100%);
+      transform: scale(1.05);
+    }
+    .divider {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #4fc3f7 0%, #ffe082 100%);
+      border-radius: 2px;
+      margin: 2rem auto 2.5rem auto;
+      opacity: 0.7;
+    }
+    .menu-section {
+      max-width: 1100px;
+      margin: -3rem auto 2rem auto;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(79,195,247,0.10);
+      padding: 2.5rem 1.5rem 3rem 1.5rem;
+      position: relative;
+      z-index: 3;
+    }
+    .menu-section h3 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      color: #039be5;
+      letter-spacing: 1px;
+    }
+    .menu-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.2rem;
+      justify-content: center;
+    }
+    .menu-item {
+      background: #e0f7fa;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(79,195,247,0.13);
+      width: 260px;
+      padding: 1.2rem 1rem 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.18s, box-shadow 0.18s;
+      position: relative;
+    }
+    .menu-item:hover {
+      transform: translateY(-7px) scale(1.04);
+      box-shadow: 0 8px 32px rgba(2,136,209,0.18);
+    }
+    .menu-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(79,195,247,0.10);
+    }
+    .menu-item h4 {
+      margin: 0.5rem 0 0.2rem 0;
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: #039be5;
+    }
+    .menu-item p {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.01rem;
+      color: #00838f;
+      text-align: center;
+      min-height: 38px;
+    }
+    .menu-item .price {
+      font-weight: bold;
+      color: #039be5;
+      margin-bottom: 0.7rem;
+      font-size: 1.08rem;
+    }
+    .menu-item button {
+      background: linear-gradient(90deg, #4fc3f7 0%, #ffe082 100%);
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.4rem;
+      border-radius: 22px;
+      cursor: pointer;
+      font-size: 1.05rem;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(79,195,247,0.10);
+      transition: background 0.18s, transform 0.13s;
+    }
+    .menu-item button:hover {
+      background: linear-gradient(90deg, #039be5 0%, #ffe082 100%);
+      transform: scale(1.07);
+    }
+    /* Cart styles */
+    .cart {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 340px;
+      height: 100vh;
+      background: #fff;
+      box-shadow: -2px 0 24px rgba(79,195,247,0.13);
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      z-index: 100;
+      transform: translateX(100%);
+      transition: transform 0.38s cubic-bezier(0.77,0,0.18,1);
+      display: flex;
+      flex-direction: column;
+      border-top-left-radius: 18px;
+      border-bottom-left-radius: 18px;
+    }
+    .cart.open {
+      transform: translateX(0);
+    }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .cart-header h4 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #039be5;
+    }
+    .cart-close {
+      background: none;
+      border: none;
+      font-size: 1.7rem;
+      cursor: pointer;
+      color: #039be5;
+    }
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .cart-item span {
+      font-size: 1rem;
+    }
+    .cart-total {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      text-align: right;
+      color: #039be5;
+    }
+    .checkout-btn {
+      background: #4fc3f7;
+      color: #fff;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 24px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s;
+    }
+    .checkout-btn:hover {
+      background: #039be5;
+    }
+    @media (max-width: 900px) {
+      .menu-items {
+        flex-direction: column;
+        align-items: center;
+      }
+      .menu-item {
+        width: 90vw;
+        max-width: 350px;
+      }
+      .cart {
+        width: 100vw;
+        max-width: 400px;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 1.5rem;
+      }
+      .menu-section {
+        padding: 1rem 0.2rem 2rem 0.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>eat&order</h1>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#" id="cartBtn">Cart (<span id="cartCount">0</span>)</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Delicious Food, Delivered Fast</h2>
+      <p>Order your favorite meals from the best restaurants in town. Fresh, hot, and at your doorstep in minutes!</p>
+      <button onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">View Menu</button>
+    </div>
+  </section>
+  <section class="menu-section" id="menu">
+    <h3>Our Menu</h3>
+    <div class="menu-items" id="menuItems">
+      <!-- Menu items will be injected here -->
+    </div>
+  </section>
+  <div class="cart" id="cart">
+    <div class="cart-header">
+      <h4>Your Cart</h4>
+      <button class="cart-close" id="closeCart">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-total" id="cartTotal">Total: ₹0.00</div>
+    <button class="checkout-btn" id="checkoutBtn">Checkout</button>
+  </div>
+  <script>
+    // Sample menu data
+    const menu = [
+      {
+        id: 1,
+        name: 'Margherita Pizza',
+        desc: 'Classic delight with fresh mozzarella, tomatoes, and basil.',
+        price: 100.99,
+        img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80'
+      },
+      {
+        id: 2,
+        name: 'Cheeseburger',
+        desc: 'Juicy beef patty, cheddar cheese, lettuce, and tomato.',
+        price: 80.49,
+        img: 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80'
+      },
+      {
+        id: 3,
+        name: 'Chicken Biryani',
+        desc: 'Aromatic basmati rice with tender chicken and spices.',
+        price: 120.99,
+        img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80'
+      },
+      {
+        id: 6,
+        name: 'Masala Dosa',
+        desc: 'Crispy rice crepe filled with spicy potato masala, served with coconut chutney and sambar.',
+        price: 90.49,
+        img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80'
+      },
+      {
+        id: 7,
+        name: 'Veg Hakka Noodles',
+        desc: 'Stir-fried noodles tossed with fresh vegetables and Indo-Chinese spices.',
+        price: 80.99,
+        img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80'
+      }
+    ];
+    // Render menu
+    const menuItemsDiv = document.getElementById('menuItems');
+    menu.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'menu-item';
+      div.innerHTML = `
+        <img src="${item.img}" alt="${item.name}">
+        <h4>${item.name}</h4>
+        <p>${item.desc}</p>
+        <div class="price">₹${item.price.toFixed(2)}</div>
+        <button onclick="addToCart(${item.id})">Add to Cart</button>
+      `;
+      menuItemsDiv.appendChild(div);
+    });
+    // Cart logic
+    let cart = [];
+    function addToCart(id) {
+      const found = cart.find(item => item.id === id);
+      if (found) {
+        found.qty += 1;
+      } else {
+        const menuItem = menu.find(item => item.id === id);
+        cart.push({ ...menuItem, qty: 1 });
+      }
+      updateCart();
+      openCart();
+    }
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      updateCart();
+    }
+    function updateCart() {
+      const cartItemsDiv = document.getElementById('cartItems');
+      const cartCount = document.getElementById('cartCount');
+      const cartTotal = document.getElementById('cartTotal');
+      cartItemsDiv.innerHTML = '';
+      let total = 0;
+      let count = 0;
+      cart.forEach(item => {
+        total += item.price * item.qty;
+        count += item.qty;
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <span>${item.name} x${item.qty}</span>
+          <span>₹${(item.price * item.qty).toFixed(2)}</span>
+          <button style="background:none;border:none;color:#039be5;font-size:1.2rem;cursor:pointer;" onclick="removeFromCart(${item.id})">&times;</button>
+        `;
+        cartItemsDiv.appendChild(div);
+      });
+      cartCount.textContent = count;
+      cartTotal.textContent = `Total: ₹${total.toFixed(2)}`;
+    }
+    function openCart() {
+      document.getElementById('cart').classList.add('open');
+    }
+    function closeCart() {
+      document.getElementById('cart').classList.remove('open');
+    }
+    document.getElementById('cartBtn').onclick = openCart;
+    document.getElementById('closeCart').onclick = closeCart;
+    document.getElementById('checkoutBtn').onclick = function() {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      alert('Thank you for your order! (Checkout functionality coming soon)');
+      cart = [];
+      updateCart();
+      closeCart();
+    };
+    // Close cart on outside click
+    window.addEventListener('click', function(e) {
+      const cartDiv = document.getElementById('cart');
+      if (cartDiv.classList.contains('open') && !cartDiv.contains(e.target) && e.target.id !== 'cartBtn') {
+        closeCart();
+      }
+    });
+    // Initialize cart
+    updateCart();
+  </script>
+</body>
+</html>
